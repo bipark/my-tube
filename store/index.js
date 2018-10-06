@@ -1,0 +1,63 @@
+import Vuex from 'vuex';
+
+const store = () => new Vuex.Store({
+
+  state: {
+    bcolor: "black",
+    bgcolor: "black lighten-1",
+    user: null,
+    mobile: false
+  },
+
+  getters: {
+    activeUser: (state, getters) => {
+      return state.user;
+    },
+	  platform: (state, getters) => {
+      return state.platform;
+    }
+  },
+
+  mutations: {
+    setUser (state, payload) {
+      state.user = payload;
+	    this.$cookies.set("authuser", payload, {
+		    path: "/",
+		    maxAge: 60 * 60 * 24
+	    });
+    },
+    setPlatform (state, payload) {
+      state.mobile = payload;
+    },
+    setColor (state, payload) {
+      state.bcolor = payload.bcolor;
+      state.bgcolor = payload.bgcolor;
+    }
+  },
+
+  actions: {
+	  nuxtServerInit ({ commit }, { req }) {
+
+		  const user = this.$cookies.get("authuser");
+		  if (user) {
+			  commit("setUser", user);
+		  } else {
+			  commit("setUser", null);
+		  }
+
+		  if (process.env.B_COLOR && process.env.BG_COLOR) {
+	      commit("setColor", {
+	        bcolor:process.env.B_COLOR,
+          bgcolor:process.env.BG_COLOR
+	      })
+      }
+	  },
+
+	  logOut({ commit }) {
+		  commit("setUser", null);
+	  }
+  },
+
+});
+
+export default store

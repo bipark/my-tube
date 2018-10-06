@@ -1,0 +1,40 @@
+{
+  "name": "MiTube-Web-Client",
+  "version": "1.0.0",
+  "description": "MiTube Web Client",
+  "author": "rtlink.park@gmail.com || http://practical.kr",
+  "private": false,
+  "scripts": {
+    "dev": "HOST=0.0.0.0 PORT=3999 nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.1",
+    "@nuxtjs/dotenv": "^1.1.1",
+    "@nuxtjs/google-adsense": "^1.1.3",
+    "@nuxtjs/google-analytics": "^2.0.2",
+    "@nuxtjs/moment": "^1.0.0",
+    "@nuxtjs/vuetify": "^0.4.2",
+    "babel-runtime": "^6.26.0",
+    "cookie-universal-nuxt": "^2.0.5",
+    "moment": "^2.22.2",
+    "mysql": "^2.16.0",
+    "nuxt": "^2.0.0",
+    "request-ip": "^2.1.1",
+    "squel": "^5.12.2",
+    "vue-localstorage": "^0.6.2",
+    "vue-markdown": "^2.2.4",
+    "vue-youtube": "^1.2.5"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.15.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-vue": "^4.0.0"
+  }
+}
