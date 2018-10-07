@@ -3,15 +3,13 @@
   <component :is="$store.state.mobile ? 'div': 'v-container'">
 
     <v-layout row>
-      <h1>{{master.title}}</h1>
+      <h1 class="ml-1 mr-1 mt-2">{{master.title}}</h1>
     </v-layout>
-    <v-layout row wrap>
-      <v-flex xs12>
-        {{master.description}}
-      </v-flex>
+    <v-layout row wrap class="ml-1 mr-1">
+      {{master.description}}
     </v-layout>
 
-    <v-layout>
+    <v-layout class="mr-1 ml-1">
       <span class="mr-2" style="color : darkgray">
         {{master.cdate}}
       </span>
