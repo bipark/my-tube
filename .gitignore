@@ -80,3 +80,6 @@ dist
 # IDE
 .idea
 .idea/workspace.xml
+
+# SHELL
+web.sh
