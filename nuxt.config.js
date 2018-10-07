@@ -74,6 +74,10 @@ module.exports = {
 
   loading: { color: process.env.B_COLOR },
 
+  axios: {
+    baseURL:process.env.API_SERVER,
+  },
+
 	serverMiddleware: [
 		'~/apiserver/index.js'
 	],
