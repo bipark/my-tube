@@ -23,12 +23,12 @@
 * 동영상 플레이어
 * 카테고리별 연속 플레이 기능
 * 불량 동영상 신고 기능
-* 구글 / 페이스북 회원 가입
-* 소셜 좋아요
+* 회원 가입
+* 소셜 - 좋아요 버튼
 * 댓글
 * 북마크 / 라이크 
 * 회원 반응에 변동되는 순위 시스템
-* 반응형 스타일을 지원 합니다. - 모바일 페이지를 별도로 만들 필요가 없습니다.
+* 반응형 스타일을 지원 - 모바일 페이지를 별도로 만들 필요가 없습니다.
 * 구글 SEO(Search Engine Optimazation)에 최적화 되어 있습니다.
 * 구글 구조화된 데이터(Structured Data)를 지원합니다. - VideoObject(마크업: schema.org)
 * SSR(Server Side Rendering)을 지원 하는 구조
@@ -90,8 +90,6 @@ $ npm run generate
 * 프로젝트를 빌드하고 실행 하기 위해서 .env 파일을 생성하고 아래의 정보를 입력해서 제공 해야 정상적인 실행이 가능 합니다.
 * Google Analytics - [https://analytics.google.com](https://analytics.google.com)
 * Google Adsense - [https://www.google.com/adsense](https://www.google.com/adsense)
-* Facebook - [https://developers.facebook.com](https://developers.facebook.com) 새 앱만들기
-* Google Api - [https://console.cloud.google.com/apis](https://console.cloud.google.com/apis)
 
 ``` bash
 // 프로젝트 루트 폴더에 .env 파일을 만들어서 아래의 정보를 입력합니다 
