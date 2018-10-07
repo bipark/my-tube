@@ -30,7 +30,7 @@
 * 회원 반응에 변동되는 순위 시스템
 * 반응형 스타일을 지원 합니다. - 모바일 페이지를 별도로 만들 필요가 없습니다.
 * 구글 SEO(Search Engine Optimazation)에 최적화 되어 있습니다.
-* 구글 구조화된 데이터 구조를 지원합니다. - VideoObject(마크업: schema.org)
+* 구글 구조화된 데이터(Structured Data)를 지원합니다. - VideoObject(마크업: schema.org)
 * SSR(Server Side Rendering)을 지원 하는 구조
 * 사용자 문의
 * 공지사항
@@ -67,6 +67,8 @@
 
 
 ``` bash
+# 프로젝트를 설정하기 전에 DB-SCHEMA.md 파일을 참조하여 MySQL 데이터베이스를 생성하고 아래 순서로 설치를 시작 합니다.
+
 # 이 프로젝트를 Git을 이용하여 Clone 하거나 다운로드 합니다.
 $ git clone https://github.com/bipark/mitube-web-client.git
 
@@ -131,7 +133,7 @@ BG_COLOR=red lighten-1
 
 ## 마이튜브 기반으로 운영중인 페이지
 * CF 동영상 큐레이션 서비스 - [https://cfvdo.com](https://cfvdo.com)
-* 동영상 소프트웨어 개발 강의 서비스 - [https://sepdong.com](https://sepdong.com)
+* 소프트웨어 개발 강의 동영상 서비스 - [https://sepdong.com](https://sepdong.com)
 
 
 ## 라이선스 
