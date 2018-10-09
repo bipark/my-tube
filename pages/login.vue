@@ -71,14 +71,6 @@
 	  },
 
     methods: {
-      googleSignUp () {
-	      this.$store.dispatch("signWithGoogle");
-      },
-
-      facebookSignUp () {
-	      this.$store.dispatch("signWithFacebook");
-      },
-
 	    startLogin() {
 		    const emailValidator = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -105,8 +97,10 @@
               "user": this.user
             };
 
+				    alert(JSON.stringify(postparams));
             this.$axios.post(reqAddress, postparams)
               .then((result)=>{
+              	alert(JSON.stringify(result));
                 if (result.data.err){
                   alert(result.data.err);
                 } else {
@@ -120,7 +114,10 @@
 	                }
 
                 }
-              });
+              })
+              .catch((err)=>{
+              	alert(err)
+              })
 
 			    } else {
 				    alert("패스워드는 반드시 입력해야 합니다.")

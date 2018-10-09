@@ -5,9 +5,9 @@
   "author": "rtlink.park@gmail.com || http://practical.kr",
   "private": false,
   "scripts": {
-    "dev": "PORT=3999 nuxt",
+    "dev": "HOST=0.0.0.0 PORT=3999 nuxt",
     "build": "nuxt build",
-    "start": "PORT=3999 nuxt start",
+    "start": "HOST=0.0.0.0 PORT=3999 nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"

@@ -437,3 +437,22 @@ exports.postContactUsProcess = function(req, res) {
 	});
 
 };
+
+exports.postUserRegistDevice = function(req, res) {
+
+	const updateSql = squel.update()
+		.table("users")
+		.set("dos = ?", req.body.params.dos)
+		.set("dname = ?", req.body.params.dname)
+		.set("dtoken = ?", req.body.params.dtoken)
+		.where("uid = ?", req.body.params.uid);
+
+	pool.query(updateSql.toString(), function(err, result){
+		if (err) console.log(err);
+		res.send({
+			err:err,
+			result:result
+		});
+	});
+
+};

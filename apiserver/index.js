@@ -101,6 +101,7 @@ app.use(function(req, res, next) {
 	app.post('/api/user/change/status', user_model.postUserChangeStatus);
 	app.post('/api/user/change/password', user_model.postUserChangePassword);
 	app.post('/api/user/delete', user_model.postUserDelete);
+	app.post('/api/user/regist/device', user_model.postUserRegistDevice);
 
 	// Contact Us
 	app.post('/api/contact/add', user_model.postContactUs);

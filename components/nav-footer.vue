@@ -50,7 +50,7 @@
             </div>
             <br/>
             <div>
-              <a href="https://practical.kr/mitube" target="_blank">
+              <a href="https://practical.kr" target="_blank">
                 이 서비스는 오픈소스 my-tube 기반으로 운영되고 있습니다.
               </a>
             </div>
