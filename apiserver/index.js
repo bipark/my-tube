@@ -9,6 +9,7 @@ var act_model = require('./models/activity_models');
 var notice_model = require('./models/notice_model');
 var stat_model = require('./models/stat_models');
 var comment_model = require('./models/comment_model');
+var device_model = require('./models/device_models');
 
 
 app.use(bodyParser.json());
@@ -101,7 +102,9 @@ app.use(function(req, res, next) {
 	app.post('/api/user/change/status', user_model.postUserChangeStatus);
 	app.post('/api/user/change/password', user_model.postUserChangePassword);
 	app.post('/api/user/delete', user_model.postUserDelete);
-	app.post('/api/user/regist/device', user_model.postUserRegistDevice);
+
+	// Device Management
+	app.post('/api/user/regist/device', device_model.postRegistDevice);
 
 	// Contact Us
 	app.post('/api/contact/add', user_model.postContactUs);

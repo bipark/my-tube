@@ -438,21 +438,3 @@ exports.postContactUsProcess = function(req, res) {
 
 };
 
-exports.postUserRegistDevice = function(req, res) {
-
-	const updateSql = squel.update()
-		.table("users")
-		.set("dos = ?", req.body.os)
-		.set("dname = ?", req.body.name)
-		.set("dtoken = ?", req.body.token)
-		.where("uid = ?", req.body.uid);
-
-	pool.query(updateSql.toString(), function(err, result){
-		if (err) console.log(err);
-		res.send({
-			err:err,
-			result:result
-		});
-	});
-
-};
