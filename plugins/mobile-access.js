@@ -15,8 +15,8 @@ export default async function ({ app, store, redirect }) {
 				uid: store.state.user.uid
 			};
 
-			alert(JSON.stringify(param))
-			app.$axios.$post("/api/user/regist/device", param)
+			alert(JSON.stringify(param));
+			app.$axios.post("/api/user/regist/device", param)
 				.then((res)=>{
 					alert(JSON(res));
 					console.log(res);
