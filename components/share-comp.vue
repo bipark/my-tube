@@ -39,12 +39,6 @@
           </v-btn>
         </network>
 
-        <network network="weibo">
-          <v-btn fab small :color="$store.state.bgcolor">
-            <img  class="revert" src="@/assets/icons/weibo.svg" width="20" height="20"/>
-          </v-btn>
-        </network>
-
       </div>
 
     </social-sharing>
@@ -58,10 +52,6 @@
 
 
   export default {
-    components: {
-
-    },
-
     props: {
       "meta": {
         type: Object,

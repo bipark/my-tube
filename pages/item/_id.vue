@@ -32,19 +32,21 @@
       </v-layout>
 
       <v-layout row wrap class="mb-3">
-        <div class="mr-3 ml-1" style="color : darkgray">
+        <div class="mr-3 ml-1 dark-gray-text">
           {{publishedDate}}
         </div>
-        <div class="mr-3" style="color : darkgray">
+        <div class="mr-3 dark-gray-text">
           조회 : {{video.views}}
         </div>
-        <div v-if="video.like_count > 0" class="mr-3" style="color : darkgray">
+        <div v-if="video.like_count > 0" class="mr-3 dark-gray-text">
           좋아요 : {{video.like_count}}
         </div>
-        <div v-if="video.bookmark_count > 0" class="mr-3" style="color : darkgray">
+        <div v-if="video.bookmark_count > 0" class="mr-3 dark-gray-text">
           북마크 : {{video.bookmark_count}}
         </div>
       </v-layout>
+
+      <ShareComp :meta="meta" from="item" class="ml-1 mr-1 mt-3"/>
 
       <v-layout row wrap class="mt-2 mb-3 ml-1 mr-1 ">
         <v-flex>
@@ -115,6 +117,7 @@
   import AdSense from '~/components/ad-sense';
   import ReportComp from '~/components/report-comp';
   import Comment from '~/components/comment';
+
 
   export default {
     components: {
@@ -372,4 +375,7 @@
 </script>
 
 <style>
+  .dark-gray-text {
+    color: darkgrey;
+  }
 </style>

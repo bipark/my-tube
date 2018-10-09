@@ -24,7 +24,9 @@
       </span>
     </v-layout>
 
-    <v-layout row wrap>
+    <ShareComp :meta="meta" from="curation" class="ml-1 mr-1 mt-3"/>
+
+    <v-layout row wrap class="ml-1 mr-1">
 
       <div v-if="like">
         <v-btn fab small :color="$store.state.bgcolor" @click.native="addLike(false)">

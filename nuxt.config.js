@@ -55,7 +55,8 @@ module.exports = {
 	  {src: '~/plugins/vue-youtube.js', ssr:false},
 	  {src: '~/plugins/vue-localstorage.js'},
 	  {src: '~/plugins/axios.js'},
-	  {src: '~/plugins/mobile-access.js', ssr:false}
+	  {src: '~/plugins/mobile-access.js', ssr:false},
+	  {src: '~/plugins/vue-social-sharing.js', ssr:false}
   ],
 
   modules: [

@@ -29,6 +29,7 @@
     "squel": "^5.12.2",
     "vue-localstorage": "^0.6.2",
     "vue-markdown": "^2.2.4",
+    "vue-social-sharing": "^2.3.3",
     "vue-youtube": "^1.2.5"
   },
   "devDependencies": {
