@@ -23,7 +23,7 @@
     "cookie-universal-nuxt": "^2.0.5",
     "moment": "^2.22.2",
     "mysql": "^2.16.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.1.0",
     "nuxt-client-init-module": "^0.1.4",
     "request-ip": "^2.1.1",
     "squel": "^5.12.2",
