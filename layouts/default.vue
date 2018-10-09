@@ -53,7 +53,11 @@
       </div>
     </no-ssr>
 
-    <NavFooter/>
+    <div v-if="$store.state.mobile" class="mb-5">
+    </div>
+    <div v-else>
+      <NavFooter/>
+    </div>
   </v-app>
 </template>
 
