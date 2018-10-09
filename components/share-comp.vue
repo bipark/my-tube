@@ -32,13 +32,7 @@
             <img  class="revert" src="@/assets/icons/twitter.svg" width="20" height="20"/>
           </v-btn>
         </network>
-
-        <network network="line">
-          <v-btn fab small :color="$store.state.bgcolor">
-            <img  class="revert" src="@/assets/icons/line.svg" width="20" height="20"/>
-          </v-btn>
-        </network>
-
+        
       </div>
 
     </social-sharing>
