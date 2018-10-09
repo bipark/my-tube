@@ -7,6 +7,7 @@ export default async function ({ app, store, redirect }) {
 	window.mobile_registerDevice = function(info) {
 
 		if (store.state.user) {
+
 			const param = {
 				os: info.os,
 				name: info.name,
@@ -14,7 +15,13 @@ export default async function ({ app, store, redirect }) {
 				uid: store.state.user.uid
 			};
 
-			app.$axios.$post("/api/user/regist/device", param);
+			alert(JSON.stringify(param))
+			app.$axios.$post("/api/user/regist/device", param)
+				.then((res)=>{
+					alert(JSON(res));
+					console.log(res);
+				});
+
 		}
 	}
 
