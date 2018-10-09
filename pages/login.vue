@@ -97,10 +97,8 @@
               "user": this.user
             };
 
-				    alert(JSON.stringify(postparams));
             this.$axios.post(reqAddress, postparams)
               .then((result)=>{
-              	alert(JSON.stringify(result));
                 if (result.data.err){
                   alert(result.data.err);
                 } else {
