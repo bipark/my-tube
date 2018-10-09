@@ -442,10 +442,10 @@ exports.postUserRegistDevice = function(req, res) {
 
 	const updateSql = squel.update()
 		.table("users")
-		.set("dos = ?", req.body.params.dos)
-		.set("dname = ?", req.body.params.dname)
-		.set("dtoken = ?", req.body.params.dtoken)
-		.where("uid = ?", req.body.params.uid);
+		.set("dos = ?", req.body.os)
+		.set("dname = ?", req.body.name)
+		.set("dtoken = ?", req.body.token)
+		.where("uid = ?", req.body.uid);
 
 	pool.query(updateSql.toString(), function(err, result){
 		if (err) console.log(err);
