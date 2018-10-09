@@ -33,7 +33,7 @@ exports.postRegistDevice = function(req, res) {
 
 			res.send({
 				err:err,
-				result:result
+				result:tokens
 			});
 		}
 
