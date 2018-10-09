@@ -2,7 +2,7 @@
 
   <v-app id="inspire">
 
-    <v-navigation-drawer :clipped="$vuetify.breakpoint.lgAndUp" v-model="drawer" fixed app>
+    <v-navigation-drawer :clipped="$vuetify.breakpoint.lgAndUp" v-model="drawer" width=250 fixed app>
 
       <MenuNormal/>
       <div v-if="user && user.scope == 'admin'">
