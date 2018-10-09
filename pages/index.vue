@@ -78,8 +78,8 @@
 
     async asyncData({app, params, store, query}) {
 
-      if (query.app) {
-		    store.commit("setPlatform", query.app);
+    	if (query.app) {
+		    store.commit("setApp", query.app);
       }
 
       const res = await app.$axios.$get("/api/features");

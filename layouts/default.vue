@@ -49,6 +49,7 @@
       <v-btn fixed dark fab small bottom left :color="$store.state.bcolor" @click.native="goBack">
         <v-icon>keyboard_backspace</v-icon>
       </v-btn>
+      <div class="mb-5"></div>
     </div>
     <div v-else>
       <NavFooter/>
