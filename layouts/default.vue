@@ -45,19 +45,15 @@
       <nuxt />
     </v-content>
 
-    <no-ssr>
-      <div v-if="$store.state.mobile">
-        <v-btn fixed dark fab small bottom left :color="$store.state.bcolor" @click.native="goBack">
-          <v-icon>keyboard_backspace</v-icon>
-        </v-btn>
-      </div>
-    </no-ssr>
-
-    <div v-if="$store.state.mobile" class="mb-5">
+    <div v-if="$store.state.app">
+      <v-btn fixed dark fab small bottom left :color="$store.state.bcolor" @click.native="goBack">
+        <v-icon>keyboard_backspace</v-icon>
+      </v-btn>
     </div>
     <div v-else>
       <NavFooter/>
     </div>
+
   </v-app>
 </template>
 

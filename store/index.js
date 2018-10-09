@@ -8,6 +8,7 @@ const store = () => new Vuex.Store({
     bgcolor: "black lighten-1",
     user: null,
     mobile: false,
+	  app: false
   },
 
   getters: {
@@ -16,10 +17,7 @@ const store = () => new Vuex.Store({
     },
 	  platform: (state, getters) => {
       return state.platform;
-    },
-	  isMobile: (state, getters) => {
-    	return null;
-	  }
+    }
   },
 
   mutations: {
@@ -36,7 +34,10 @@ const store = () => new Vuex.Store({
     setColor (state, payload) {
       state.bcolor = payload.bcolor;
       state.bgcolor = payload.bgcolor;
-    }
+    },
+	  setApp (state, payload) {
+    	state.app = payload;
+	  }
   },
 
   actions: {
