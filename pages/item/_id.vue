@@ -46,29 +46,6 @@
         </div>
       </v-layout>
 
-
-      <no-ssr>
-        <v-layout row class="mt-2 mb-3 ml-1 mr-1">
-          <div class="fb-like"
-               :data-href="'https://cfvdo.com/item/'+video.id"
-               data-layout="standard"
-               data-action="like"
-               data-size="small"
-               data-show-faces="false"
-               data-share="true">
-          </div>
-          <div id="fb-root"></div>
-          <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.1&appId=1422389418025118&autoLogAppEvents=1';
-            fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));
-          </script>
-        </v-layout>
-      </no-ssr>
-
       <v-layout row wrap class="mt-2 mb-3 ml-1 mr-1 ">
         <v-flex>
           <span v-if="like">

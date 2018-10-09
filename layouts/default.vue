@@ -8,7 +8,6 @@
       <div v-if="user && user.scope == 'admin'">
         <MenuAdmin/>
       </div>
-      <!--<NavFooter/>-->
 
     </v-navigation-drawer>
 
@@ -47,7 +46,7 @@
     </v-content>
 
     <no-ssr>
-      <div v-if="$store.state.platform">
+      <div v-if="$store.state.mobile">
         <v-btn fixed dark fab small bottom left :color="$store.state.bcolor" @click.native="goBack">
           <v-icon>keyboard_backspace</v-icon>
         </v-btn>
