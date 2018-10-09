@@ -63,6 +63,7 @@ module.exports = {
     '@nuxtjs/vuetify',
 	  '@nuxtjs/moment',
 	  'cookie-universal-nuxt',
+	  'nuxt-client-init-module',
 	  ['@nuxtjs/google-analytics', {
       id: process.env.GOOGLE_ANALYTICS_KEY
     }],

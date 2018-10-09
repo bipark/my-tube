@@ -1,4 +1,3 @@
-# Created by .ignore support plugin (hsz.mobi)
 ### Node template
 # Logs
 logs
@@ -83,3 +82,6 @@ dist
 
 # SHELL
 web.sh
+
+# Package-lock
+package-lock.json

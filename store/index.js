@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import Vuex from 'vuex';
 
 const store = () => new Vuex.Store({
@@ -6,7 +7,7 @@ const store = () => new Vuex.Store({
     bcolor: "black",
     bgcolor: "black lighten-1",
     user: null,
-    mobile: false
+    mobile: false,
   },
 
   getters: {
@@ -15,7 +16,10 @@ const store = () => new Vuex.Store({
     },
 	  platform: (state, getters) => {
       return state.platform;
-    }
+    },
+	  isMobile: (state, getters) => {
+    	return null;
+	  }
   },
 
   mutations: {
@@ -53,9 +57,16 @@ const store = () => new Vuex.Store({
       }
 	  },
 
+	  nuxtClientInit({ commit }, context) {
+		  if (Vue.prototype.$vuetify.breakpoint.width < 768 ) {
+		  	this.state.mobile = true;
+		  }
+	  },
+
 	  logOut({ commit }) {
 		  commit("setUser", null);
-	  }
+	  },
+
   },
 
 });

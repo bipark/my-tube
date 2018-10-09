@@ -78,10 +78,6 @@
 
     async asyncData({app, params, store, query}) {
 
-    	if (query.platform == 'mobile') {
-		    store.commit("setPlatform", true);
-      }
-
       const res = await app.$axios.$get("/api/features");
       const videonumber = Math.floor(Math.random() * 5);
 
