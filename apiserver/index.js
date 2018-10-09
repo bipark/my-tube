@@ -104,7 +104,7 @@ app.use(function(req, res, next) {
 	app.post('/api/user/delete', user_model.postUserDelete);
 
 	// Device Management
-	app.post('/api/user/regist/device', device_model.postRegistDevice);
+	app.post('/api/device/regist', device_model.postRegistDevice);
 
 	// Contact Us
 	app.post('/api/contact/add', user_model.postContactUs);

@@ -112,7 +112,6 @@
     },
 
     mounted() {
-	    this.$localStorage.set("platform", this.$store.state.platform);
     },
 
     methods: {
