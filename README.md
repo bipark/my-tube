@@ -1,9 +1,8 @@
 # 마이튜브 (My-Tube)
 
-* 동영상 컨텐츠, 특별히 유튜브 동영상은 다른 모든 컨텐츠 소비를 누르고 압도적인 사용성을 보이고 있습니다. 하지만 좀 더 전문적이고 사용자 취향에 맞는 컨텐츠를 제공 하고 사용자들의 집중도를 높이는 것은 컨텐츠 제작자 & 공급자들의 과제 입니다.   
-* 마이튜브(My-Tybe)는 유튜브 기반의 동영상 컨텐츠 큐레이션 솔루션입니다.
-* 사용자의 취향에 대응 할 수 있는 서비스를 독자적으로 구축 & 운영 할 수 있습니다.
-* 이 프로젝트는 오픈소스 소프트웨어 입니다. 아래 라이선스 항목을 참조 하시기 바랍니다.  
+* 마이튜브(My-Tube)는 오픈소스 기반의 동영상 큐레이션 서비스와 큐레이션 관리를 위한 백오피스 프로젝트가 포함된 서비스 솔루션입니다.
+* 이 프로젝트를 사용하여 사용자의 취향에 대응 할 수 있는 유튜브 기반의 동영상 큐레이션 서비스를 구축 & 운영 할 수 있습니다.
+* 이 프로젝트는 오픈소스 소프트웨어 입니다. 아래 라이선스 항목을 참조 하시기 바랍니다.
 
 
 ![](https://s3.ap-northeast-2.amazonaws.com/rtlink/v1-front.jpg)
@@ -61,31 +60,12 @@
 * Other - Packages.json 참조 
 
 
-## 설치방법
-
-
-``` bash
-# 프로젝트를 설정하기 전에 DB-SCHEMA.md 파일을 참조하여 MySQL 데이터베이스를 생성하고 아래 순서로 설치를 시작 합니다.
-
-# 이 프로젝트를 Git을 이용하여 Clone 하거나 다운로드 합니다.
-$ git clone https://github.com/bipark/mitube-web-client.git
-
-# 디펜던시를 먼저 설치합니다
-$ npm install
-
-# 개발환경에서는 아래와 같이 프로젝트를 실행 할 수 있습니다.
-$ npm run dev
-
-# 프로덕션을 위해서 빌드 & 실행을 다음 명령으로 실행 할 수 있습니다.
-$ npm run build
-$ npm start
-
-# 스태틱한 런타임 환경을 구축 하려면 아래 명령어로 실행 할 수 있습니다.
-$ npm run generate
-```
-
 ## .env 파일 만들기
-* 프로젝트를 빌드하고 실행 하기 위해서 .env 파일을 생성하고 아래의 정보를 입력해서 제공 해야 정상적인 실행이 가능 합니다.
+* 프로젝트를 빌드하고 실행 하기 위해서 **꼭** .env 파일을 생성하고 아래의 정보를 입력해서 제공 해야 정상적인 실행이 가능 합니다.
+* .env 파일은 프로젝트 root 에 아래의 필드의 항목을 모두 채우고 빌드와 실행을 시작해야 합니다.
+
+* 아래 링크에서 구글 Api Key, 구글 에널리틱스 & 애드센스 키를 만들 수 있습니다.
+* 구글 Api Key 생성 - https://developers.google.com/youtube/v3/getting-started?hl=ko
 * Google Analytics - [https://analytics.google.com](https://analytics.google.com)
 * Google Adsense - [https://www.google.com/adsense](https://www.google.com/adsense)
 
@@ -122,6 +102,31 @@ SHOW_BORDER=false
 B_COLOR=red
 BG_COLOR=red lighten-1
 ```
+
+
+## 설치방법
+
+``` bash
+# 프로젝트를 설정하기 전에 DB-SCHEMA.md 파일을 참조하여 MySQL 데이터베이스를 생성하고 아래 순서로 설치를 시작 합니다.
+
+# 이 프로젝트를 Git을 이용하여 Clone 하거나 다운로드 합니다.
+$ git clone https://github.com/bipark/mitube-web-client.git
+
+# 디펜던시를 먼저 설치합니다
+$ npm install
+
+# 개발환경에서는 아래와 같이 프로젝트를 실행 할 수 있습니다.
+$ npm run dev
+
+# 프로덕션을 위해서 빌드 & 실행을 다음 명령으로 실행 할 수 있습니다.
+$ npm run build
+$ npm start
+
+# 스태틱한 런타임 환경을 구축 하려면 아래 명령어로 실행 할 수 있습니다.
+$ npm run generate
+```
+
+
 
 ## 개발자
 * 이 프로젝트는 (주)프랙티컬 [https://practical.kr](http://practical.kr) 에서 만들고 있습니다.
