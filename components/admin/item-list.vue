@@ -2,6 +2,7 @@
 
   <v-layout row wrap>
     <v-flex xs6 sm4 lg2 xl2 v-for="item in itemlist" :key="item.id">
+
       <v-card style="margin: 2px">
         <nuxt-link :to="'/admin/item/'+item.id">
           <div class="img-container">
@@ -10,13 +11,24 @@
                  :alt="item.title"
             />
             <div v-if="duration(item.duration)">
-              <div class="bottom-right">{{duration(item.duration)}}</div>
+              <div class="bottom-right">
+                {{duration(item.duration)}}
+              </div>
             </div>
           </div>
         </nuxt-link>
       </v-card>
-      <v-icon small @click="deleteFromCurationDetail(item.pid)">delete</v-icon>
-      <small>{{item.id}}</small>
+
+      <div style="padding: 5px" class="mb-2">
+        <div class="small-text">
+          [ {{item.id}} ] {{item.title}}
+        </div>
+        <div class="small-text">
+          {{createdDateFotmatted(item.createdDate)}}
+        </div>
+        <v-icon small @click="deleteFromCurationDetail(item.pid)">delete</v-icon>
+      </div>
+
     </v-flex>
   </v-layout>
 
@@ -79,6 +91,10 @@
 
         }
       },
+
+      createdDateFotmatted(cdate) {
+	      return this.$moment(cdate).format('YYYY-MM-DD');
+      }
     }
 
   }
