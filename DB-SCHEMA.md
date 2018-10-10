@@ -6,9 +6,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: cfvdo.com (MySQL 5.7.23-0ubuntu0.16.04.1)
+# Host: 127.0.0.1 (MySQL 5.7.19)
 # Database: adgallery
-# Generation Time: 2018-09-08 08:21:03 +0000
+# Generation Time: 2018-10-10 13:46:43 +0000
 # ************************************************************
 
 
@@ -24,8 +24,6 @@
 # Dump of table bookmarks
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `bookmarks`;
-
 CREATE TABLE `bookmarks` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `createdDate` datetime NOT NULL,
@@ -39,8 +37,6 @@ CREATE TABLE `bookmarks` (
 
 # Dump of table cbookmarks
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `cbookmarks`;
 
 CREATE TABLE `cbookmarks` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -56,8 +52,6 @@ CREATE TABLE `cbookmarks` (
 # Dump of table clikes
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `clikes`;
-
 CREATE TABLE `clikes` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `createdDate` datetime NOT NULL,
@@ -71,8 +65,6 @@ CREATE TABLE `clikes` (
 
 # Dump of table comments
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `comments`;
 
 CREATE TABLE `comments` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -88,8 +80,6 @@ CREATE TABLE `comments` (
 # Dump of table company_info
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `company_info`;
-
 CREATE TABLE `company_info` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `kind` varchar(30) NOT NULL DEFAULT '',
@@ -101,8 +91,6 @@ CREATE TABLE `company_info` (
 
 # Dump of table contact
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `contact`;
 
 CREATE TABLE `contact` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -119,8 +107,6 @@ CREATE TABLE `contact` (
 # Dump of table curation_detail
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `curation_detail`;
-
 CREATE TABLE `curation_detail` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `master_id` int(11) unsigned NOT NULL,
@@ -135,8 +121,6 @@ CREATE TABLE `curation_detail` (
 
 # Dump of table curation_master
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `curation_master`;
 
 CREATE TABLE `curation_master` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -158,8 +142,6 @@ CREATE TABLE `curation_master` (
 # Dump of table curation_rates
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `curation_rates`;
-
 CREATE TABLE `curation_rates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `curation_id` int(11) NOT NULL,
@@ -174,8 +156,6 @@ CREATE TABLE `curation_rates` (
 # Dump of table curation_views
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `curation_views`;
-
 CREATE TABLE `curation_views` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `curation_id` int(11) NOT NULL,
@@ -186,10 +166,22 @@ CREATE TABLE `curation_views` (
 
 
 
-# Dump of table features
+# Dump of table devices
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `features`;
+CREATE TABLE `devices` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) DEFAULT NULL,
+  `deviceos` varchar(256) DEFAULT NULL,
+  `token` varchar(256) DEFAULT NULL,
+  `createdDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+# Dump of table features
+# ------------------------------------------------------------
 
 CREATE TABLE `features` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -204,8 +196,6 @@ CREATE TABLE `features` (
 # Dump of table item_rates
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `item_rates`;
-
 CREATE TABLE `item_rates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `item_id` int(11) NOT NULL,
@@ -219,8 +209,6 @@ CREATE TABLE `item_rates` (
 
 # Dump of table item_views
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `item_views`;
 
 CREATE TABLE `item_views` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -237,8 +225,6 @@ CREATE TABLE `item_views` (
 
 # Dump of table items
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `items`;
 
 CREATE TABLE `items` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -271,8 +257,6 @@ CREATE TABLE `items` (
 # Dump of table likes
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `likes`;
-
 CREATE TABLE `likes` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `createdDate` datetime NOT NULL,
@@ -286,8 +270,6 @@ CREATE TABLE `likes` (
 
 # Dump of table notice
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `notice`;
 
 CREATE TABLE `notice` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -303,8 +285,6 @@ CREATE TABLE `notice` (
 # Dump of table report
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `report`;
-
 CREATE TABLE `report` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `createdDate` datetime NOT NULL,
@@ -319,8 +299,6 @@ CREATE TABLE `report` (
 # Dump of table search_histories
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `search_histories`;
-
 CREATE TABLE `search_histories` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `createdDate` datetime NOT NULL,
@@ -331,21 +309,33 @@ CREATE TABLE `search_histories` (
 
 
 
-# Dump of table users
+# Dump of table settings
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `users`;
+CREATE TABLE `settings` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `values` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+# Dump of table users
+# ------------------------------------------------------------
 
 CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `createdDate` datetime NOT NULL,
   `strategy` varchar(256) DEFAULT NULL,
   `uid` varchar(256) NOT NULL DEFAULT '',
+  `password` varchar(256) NOT NULL DEFAULT '',
+  `pkey` varchar(256) NOT NULL DEFAULT '',
   `name` varchar(256) NOT NULL DEFAULT '',
   `scope` varchar(256) NOT NULL DEFAULT 'user',
   `picture` varchar(512) DEFAULT NULL,
   `autoplay` tinyint(4) DEFAULT '1',
   `recvnoti` tinyint(4) DEFAULT '1',
+  `mailconfirm` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
