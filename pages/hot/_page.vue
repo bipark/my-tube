@@ -57,7 +57,7 @@
     async asyncData({app, params, store, query}) {
 
       const param = {
-        page: query.page ? parseInt(query.page) : 1,
+	      page: params.page ? parseInt(params.page) : 1,
         limit: 10,
         detail_limit: 6,
         popular_order: true,
@@ -87,7 +87,7 @@
       },
 
       pageClick() {
-        this.$router.push('?page='+this.param.page);
+	      this.$router.push('/hot/'+this.param.page);
         this.getServiceCurationList();
       }
 

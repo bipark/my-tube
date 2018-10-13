@@ -60,7 +60,7 @@
 		async asyncData({app, params, store, query}) {
 
 			let param = {
-				page: query.page ? parseInt(query.page) : 1,
+				page: params.page ? parseInt(params.page) : 1,
 				limit: 10,
         all: true
 			};
@@ -120,7 +120,7 @@
 			},
 
 			pageClick() {
-				this.$router.push('?page='+this.param.page);
+				this.$router.push('/admin/notice/'+this.param.page);
 				this.getItemsList();
 			},
 

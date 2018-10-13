@@ -1,8 +1,7 @@
 <template>
 
   <component :is="$store.state.mobile ? 'div': 'v-container'">
-
-    <h2 class="mt-2 ml-1 mb-2">최신 업로드</h2>
+    <h2 class="mt-2 ml-1 mb-2">인기 동영상</h2>
 
     <v-layout row wrap>
       <v-flex xs6 sm4 lg3 xl2 v-for="(row, i) in itemList" :key="row.id">
@@ -31,6 +30,7 @@
   import VideoCard from '~/components/video-card';
   import AdSense from '~/components/ad-sense';
 
+
   export default {
 
     components: {
@@ -40,16 +40,17 @@
 
     async asyncData({app, params, store, query}) {
 
-      const param = {
-        page: query.page ? parseInt(query.page) : 1,
+      let param = {
+	      page: params.page ? parseInt(params.page) : 1,
         limit: 36,
         isshow: 1,
+        popular_order: true
       };
 
       const result = await app.$axios.$get("/api/video/list", {params:param});
       return {
-        itemList : result.videolist,
         param : param,
+        itemList: result.videolist,
         pageCount : Math.ceil(result.count / param.limit),
       }
 
@@ -65,7 +66,7 @@
       },
 
       pageClick() {
-        this.$router.push('?page='+this.param.page);
+	      this.$router.push('/hotcf/'+this.param.page);
         this.getItemList();
       }
 

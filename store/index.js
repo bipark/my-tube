@@ -7,8 +7,9 @@ const store = () => new Vuex.Store({
     bcolor: "black",
     bgcolor: "black lighten-1",
     user: null,
+	  autoplay: true,
     mobile: false,
-	  app: false
+	  app: false,
   },
 
   getters: {

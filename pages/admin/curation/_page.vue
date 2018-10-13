@@ -162,7 +162,7 @@
     async asyncData({app, params, store, query}) {
 
       let queryparams = {
-        page: query.page ? parseInt(query.page) : 1,
+	      page: params.page ? parseInt(params.page) : 1,
         limit: 3,
       };
 
@@ -325,7 +325,7 @@
       },
 
       pageClick() {
-        this.$router.push('?page='+this.queryparams.page);
+	      this.$router.push('/admin/curation/'+this.queryparams.page);
         this.getCurationMaster();
       },
 
