@@ -46,7 +46,7 @@
     </v-content>
 
     <div v-if="$store.state.app">
-      <v-btn fixed dark fab small bottom left :color="$store.state.bcolor" @click.native="goBack">
+      <v-btn fixed dark fab small bottom right :color="$store.state.bcolor" @click.native="goBack">
         <v-icon>keyboard_backspace</v-icon>
       </v-btn>
       <div class="mb-5"></div>
