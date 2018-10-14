@@ -8,9 +8,9 @@
         v-model="tubelink"
       ></v-text-field>
     </v-flex>
-    <v-flex>
+    <v-flex style="max-width: 120px">
       <div class="ml-2 mr-2">
-        <v-btn :color="$store.state.bcolor" block outline large @click.native="saveYoutubeAndRelay">ADD</v-btn>
+        <v-btn :color="$store.state.bcolor" block outline large @click.native="saveYoutubeAndRelay">추가</v-btn>
       </div>
     </v-flex>
   </v-layout>

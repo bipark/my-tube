@@ -50,8 +50,8 @@
       <v-dialog v-model="dialog" persistent max-width="700">
         <v-card class="pl-4 pr-4 pt-4 pb-4">
           <h2>큐레이션에 비디오 추가 - 비디오 번호</h2>
-          <v-layout>
-            <v-flex xs10>
+          <v-layout row wrap>
+            <v-flex>
               <v-text-field
                 label="비디오 번호를 입력하세요"
                 prepend-inner-icon="video_library"
@@ -59,7 +59,7 @@
               ></v-text-field>
             </v-flex>
 
-            <v-flex xs2>
+            <v-flex style="max-width: 120px">
               <div style="padding-left: 5px; padding-right: 5px">
                 <v-btn :color="$store.state.bcolor" block outline large @click.native="postCurationDetail">추가</v-btn>
               </div>
