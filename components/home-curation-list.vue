@@ -1,37 +1,15 @@
 <template>
 
   <div>
-    <v-layout row wrap>
-      <div v-for="row in curationList" :key="row.id" style="width: 100%">
+    <CurationListShort
+      :curationList="curationList"
+      :showmore="true"
+    />
 
-        <v-layout row>
-          <v-flex>
-            <nuxt-link :to="'/curation/'+row.id">
-              <div class="list_title ml-1">{{row.title}}</div>
-            </nuxt-link>
-          </v-flex>
-          <v-flex>
-            <nuxt-link :to="'/curation/'+row.id">
-              <div class="view_more mr-1" v-if="row.details.length > 5">
-                더보기
-              </div>
-            </nuxt-link>
-          </v-flex>
-        </v-layout>
-        <v-divider class="item-list-divider"/>
-
-        <ItemList
-          :itemlist="row.details"
-          :curation="row.id"
-          class="mb-3"
-        ></ItemList>
-
+    <div v-if="curationList.length > 0">
+      <div class="text-xs-center" @click="pageClick">
+        <v-pagination :length="pageCount" :total-visible="6" v-model="param.page" :color="$store.state.bcolor"/>
       </div>
-
-    </v-layout>
-
-    <div class="text-xs-center" @click="pageClick">
-      <v-pagination :length="pageCount" :total-visible="6" v-model="param.page" :color="$store.state.bcolor"/>
     </div>
 
   </div>
@@ -40,12 +18,12 @@
 
 <script>
 
-	import ItemList from '~/components/item-list';
+	import CurationListShort from  '~/components/curation-list-short';
 
 	export default {
 
 		components: {
-			ItemList
+			CurationListShort
 		},
 
   	props: ["ppage"],

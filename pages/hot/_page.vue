@@ -4,35 +4,10 @@
 
     <h2 class="mt-2 ml-1 mb-2">인기 큐레이션</h2>
 
-    <v-layout row wrap>
-      <div v-for="row in curationList" :key="row.id">
-
-        <v-layout row>
-          <v-flex sm10>
-            <nuxt-link :to="'/curation/'+row.id">
-              <div class="list_title ml-1">{{row.title}}</div>
-            </nuxt-link>
-          </v-flex>
-          <v-flex sm2>
-            <nuxt-link :to="'/curation/'+row.id">
-              <div class="view_more mr-1" v-if="row.details.length > 5">
-                더보기
-              </div>
-            </nuxt-link>
-          </v-flex>
-        </v-layout>
-        <v-divider class="item-list-divider"/>
-
-        <ItemList
-          :itemlist="row.details"
-          :curation="row.id"
-        ></ItemList>
-        <div style="height: 20px"></div>
-
-      </div>
-
-    </v-layout>
-
+    <CurationListShort
+      :curationList="curationList"
+      :showmore="true"
+    />
     <AdSense/>
 
     <div class="text-xs-center" @click="pageClick">
@@ -45,12 +20,12 @@
 
 <script>
 
-  import ItemList from '~/components/item-list';
+	import CurationListShort from  '~/components/curation-list-short';
   import AdSense from '~/components/ad-sense';
 
   export default {
     components: {
-      ItemList,
+	    CurationListShort,
       AdSense,
     },
 
@@ -74,7 +49,6 @@
     },
 
     mounted() {
-      // this.getServiceCurationList();
     },
 
     methods: {

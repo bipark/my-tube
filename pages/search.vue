@@ -14,41 +14,10 @@
       ></v-text-field>
     </form>
 
-    <div v-if="curationList">
-      <div v-if="curationList.length > 0">
-        <h2 class="ml-1 mr-1">큐레이션</h2>
-        <v-divider class="mb-3"></v-divider>
-        <v-layout row wrap>
-          <div v-for="row in curationList" :key="row.id">
-
-            <v-layout row>
-              <v-flex sm10>
-                <nuxt-link :to="'/curation/'+row.id">
-                  <div class="list_title ml-1">{{row.title}}</div>
-                </nuxt-link>
-              </v-flex>
-              <v-flex sm2>
-                <nuxt-link :to="'/curation/'+row.id">
-                  <div class="view_more mr-1" v-if="row.details.length > 5">
-                    더보기
-                  </div>
-                </nuxt-link>
-              </v-flex>
-
-            </v-layout>
-            <v-divider class="item-list-divider"/>
-
-            <ItemList
-              :itemlist="row.details"
-              :curation="row.id"
-            ></ItemList>
-
-          </div>
-
-        </v-layout>
-      </div>
-    </div>
-
+    <CurationListShort
+      :curationList="curationList"
+      :showmore="false"
+    />
 
     <div v-if="itemList">
       <div v-if="itemList.length > 0">
@@ -77,14 +46,14 @@
 
 <script>
 
-  import ItemList from '~/components/item-list';
+	import CurationListShort from  '~/components/curation-list-short';
   import VideoCard from '~/components/video-card';
   import AdSense from '~/components/ad-sense';
 
   export default {
 
     components: {
-      ItemList,
+	    CurationListShort,
       VideoCard,
       AdSense,
     },
@@ -100,7 +69,8 @@
           page: 1,
           limit: 1,
           detail_limit: 100,
-          israndom: 1
+          israndom: 1,
+          isshow: false
         };
 
         result = await app.$axios.$get("/api/curation/master", {params:param});

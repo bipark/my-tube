@@ -6,19 +6,17 @@
       <script type="application/ld+json" v-html="ldjson"/>
 
       <no-ssr>
-        <v-layout row wrap>
-          <div class="video_player">
-            <youtube
-              :video-id="video.video_id"
-              :player-vars="playerVars"
-              @playing="playing"
-              @ended="ended"
-              ref="youtube"
-              style="width: 100%"
-            >
-            </youtube>
-          </div>
-        </v-layout>
+        <div class="video_player">
+          <youtube
+            :video-id="video.video_id"
+            :player-vars="playerVars"
+            @playing="playing"
+            @ended="ended"
+            ref="youtube"
+            style="width: 100%"
+          >
+          </youtube>
+        </div>
       </no-ssr>
 
       <v-layout row wrap class="mt-3 mb-1">
@@ -31,9 +29,12 @@
         </div>
       </v-layout>
 
-      <v-layout row wrap class="mb-3">
+      <v-layout row wrap class="mb-3 mt-1">
         <div class="mr-3 ml-1 dark-gray-text">
-          {{publishedDate}}
+          업로드 일자 : {{publishedDate}}
+        </div>
+        <div class="mr-3 ml-1 dark-gray-text">
+          시간 : {{duration}}
         </div>
         <div class="mr-3 dark-gray-text">
           조회 : {{video.views}}
@@ -226,7 +227,32 @@
 	    	return {
 			    autoplay: (this.$store.state.user && this.$store.state.user.autoplay)
 		    }
-      }
+      },
+
+	    duration() {
+		    if (this.video.duration) {
+			    var reptms = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
+			    var hours = 0, minutes = 0, seconds = 0, totalseconds;
+
+			    if (reptms.test(this.video.duration)) {
+				    var matches = reptms.exec(this.video.duration);
+				    if (matches[1]) hours = Number(matches[1]);
+				    if (matches[2]) minutes = Number(matches[2]);
+				    if (matches[3]) seconds = Number(matches[3]);
+				    totalseconds = hours * 3600  + minutes * 60 + seconds;
+				    if (hours > 0) {
+					    return this.$moment.utc(totalseconds*1000).format('HH:mm:ss');
+				    } else {
+					    return this.$moment.utc(totalseconds*1000).format('mm:ss');
+				    }
+			    } else {
+				    return null;
+			    }
+		    } else {
+			    return null;
+		    }
+	    }
+
     },
 
 	  methods: {
@@ -377,5 +403,6 @@
 <style>
   .dark-gray-text {
     color: darkgrey;
+    font-size: 13px;
   }
 </style>

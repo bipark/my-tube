@@ -14,4 +14,7 @@ export default async function ({ app, store, redirect }) {
 
 	}
 
+	window.mobile_handlePush = function() {
+		// console.log("======================================")
+	}
 }
