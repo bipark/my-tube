@@ -14,9 +14,11 @@
             <v-text-field :label=searchTitle clearable v-model="searchText"/>
           </form>
         </v-flex>
-        <v-btn block :color="$store.state.bcolor" dark outline large primary @click="startSearch" class="ml-2 mr-2 mb-4">
-          검색
-        </v-btn>
+        <v-flex class="ml-2 mr-2" style="max-width: 160px">
+          <v-btn block :color="$store.state.bcolor" dark outline large primary @click="startSearch" >
+            검색
+          </v-btn>
+        </v-flex>
       </v-layout>
     </v-card>
 
