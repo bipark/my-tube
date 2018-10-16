@@ -10,6 +10,7 @@ var notice_model = require('./models/notice_model');
 var stat_model = require('./models/stat_models');
 var comment_model = require('./models/comment_model');
 var device_model = require('./models/device_models');
+var rcmd_model = require('./models/rcmd_model');
 
 
 app.use(bodyParser.json());
@@ -128,6 +129,11 @@ app.use(function(req, res, next) {
 	app.post('/api/comment/add', comment_model.postAddComment);
 	app.post('/api/comment/delete', comment_model.postDeleteComment);
 	app.post('/api/comment/update', comment_model.postUpdateComment);
+
+	// Rcmd
+	app.post('/api/rcmdvideo/add', rcmd_model.addRcmdVideo);
+	app.post('/api/rcmdcuration/add', rcmd_model.addRcmdCuration);
+
 
 });
 
