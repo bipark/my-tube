@@ -7,10 +7,11 @@
           <youtube
             :video-id="video.video_id"
             :player-vars="playerVars"
+            player-width="100%"
             ref="youtube"
+            @ready="playerReady"
             @playing="playing"
             @ended="ended"
-            style="width: 100%"
           >
           </youtube>
         </div>
@@ -31,6 +32,7 @@
 
     data() {
 	    return {
+	    	player: null,
 	    	video: null,
 		    videonumber: 0,
 		    features: [],
@@ -49,6 +51,11 @@
 		  }
 	  },
 
+    beforeDestroy() {
+      if (this.player) {
+      	this.player.stopVideo();
+      }
+    },
 
 	  created() {
     	this.getFeatres();
@@ -63,6 +70,10 @@
 				    this.video = this.features[this.videonumber];
 			    });
 	    },
+
+      playerReady(event) {
+	      this.player = event.target
+      },
 
 		  playing() {
 		  },

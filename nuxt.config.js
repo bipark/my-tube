@@ -57,7 +57,7 @@ module.exports = {
   ],
 
   plugins: [
-	  {src: '~/plugins/vue-youtube.js', ssr:false},
+	  {src: '~/plugins/vue-youtube-embed.js', ssr:false},
 	  {src: '~/plugins/vue-localstorage.js'},
 	  {src: '~/plugins/axios.js'},
 	  {src: '~/plugins/mobile-access.js', ssr:false},

@@ -10,6 +10,8 @@
           <youtube
             :video-id="video.video_id"
             :player-vars="playerVars"
+            player-width="100%"
+            @ready="playerReady"
             @playing="playing"
             @ended="ended"
             ref="youtube"
@@ -169,7 +171,8 @@
       }
 
       return {
-        videonumber: vnumber,
+	      player: null,
+	      videonumber: vnumber,
         video : video,
         master : result.master,
         clist : result.details,
@@ -209,7 +212,13 @@
 
     },
 
-    mounted() {
+	  beforeDestroy() {
+		  if (this.player) {
+			  this.player.stopVideo();
+		  }
+	  },
+
+	  mounted() {
       this.getActions();
       this.addViewCount();
     },
@@ -362,7 +371,11 @@
         }
       },
 
-      playing() {
+		  playerReady(event) {
+			  this.player = event.target
+		  },
+
+		  playing() {
       },
 
       ended() {
