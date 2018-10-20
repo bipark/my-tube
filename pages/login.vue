@@ -74,7 +74,7 @@
 	    startLogin() {
 		    const emailValidator = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-		    if (this.user.email.length > 0 && emailValidator.test(this.user.email) ){
+		    if (this.user.email && this.user.email.length > 0 && emailValidator.test(this.user.email) ){
 			    if (this.user.password.length > 0 ) {
 
 				    if (this.rememberme) {
