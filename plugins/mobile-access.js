@@ -30,7 +30,7 @@ export default async function ({ app, store, redirect }) {
 		} else if (command == 'SEARCH') {
 			redirect('/search');
 		} else if (command == 'PROFILE') {
-			redirect('/profile');
+			redirect('/user/profile');
 		}
 	}
 }
