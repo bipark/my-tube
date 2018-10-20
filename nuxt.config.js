@@ -2,6 +2,11 @@ require('dotenv').config();
 
 module.exports = {
 
+	server: {
+		port: 3999,
+		host: '0.0.0.0', 
+	},
+
   env: {
     mainTitle:process.env.MAIN_TITLE || 'TITLE',
     subTitle:process.env.SUB_TITLE || 'SUB_TITLE',
