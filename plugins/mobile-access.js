@@ -17,4 +17,20 @@ export default async function ({ app, store, redirect }) {
 	window.mobile_handlePush = function() {
 		// console.log("======================================")
 	}
+
+	window.receiveCommandFromMobile = function(info) {
+		const command = info.command;
+
+		if (command == 'HOME') {
+			redirect('/');
+		} else if (command == 'CATEGORY') {
+			redirect('/category');
+		} else if (command == 'HOT') {
+			redirect('/hot');
+		} else if (command == 'SEARCH') {
+			redirect('/search');
+		} else if (command == 'PROFILE') {
+			redirect('/profile');
+		}
+	}
 }
