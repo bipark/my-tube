@@ -8,7 +8,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.19)
 # Database: adgallery
-# Generation Time: 2018-10-10 13:46:43 +0000
+# Generation Time: 2018-10-22 00:22:46 +0000
 # ************************************************************
 
 
@@ -276,6 +276,32 @@ CREATE TABLE `notice` (
   `created` datetime NOT NULL,
   `title` varchar(512) DEFAULT NULL,
   `description` text,
+  `active` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+# Dump of table rcmd_curation
+# ------------------------------------------------------------
+
+CREATE TABLE `rcmd_curation` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `createdDate` datetime NOT NULL,
+  `curation_id` int(11) NOT NULL,
+  `active` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+# Dump of table rcmd_video
+# ------------------------------------------------------------
+
+CREATE TABLE `rcmd_video` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `createdDate` datetime NOT NULL,
+  `item_id` int(11) NOT NULL,
   `active` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
