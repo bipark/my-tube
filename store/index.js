@@ -44,11 +44,13 @@ const store = () => new Vuex.Store({
   actions: {
 	  nuxtServerInit ({ commit }, { req }) {
 
-		  const user = this.$cookies.get("authuser");
-		  if (user) {
-			  commit("setUser", user);
-		  } else {
-			  commit("setUser", null);
+		  if (this.$cookies) {
+			  const user = this.$cookies.get("authuser");
+			  if (user) {
+				  commit("setUser", user);
+			  } else {
+				  commit("setUser", null);
+			  }
 		  }
 
 		  if (process.env.B_COLOR && process.env.BG_COLOR) {
