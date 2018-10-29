@@ -65,6 +65,7 @@ module.exports = {
   ],
 
   modules: [
+	  '@nuxtjs/pwa',
     '@nuxtjs/axios',
     '@nuxtjs/vuetify',
 	  '@nuxtjs/moment',
@@ -88,5 +89,26 @@ module.exports = {
 	serverMiddleware: [
 		'~/apiserver/index.js'
 	],
+
+	manifest: {
+		name: '광고동영상',
+		short_name: 'cfvdo',
+		lang: 'kr'
+	},
+
+	workbox: {
+		runtimeCaching: [
+			{
+				urlPattern: 'https://cfvdo.com/.*',
+				strategyOptions: {
+					cacheName: 'our-cache',
+					cacheExpiration: {
+						maxEntries: 10,
+						maxAgeSeconds: 300
+					}
+				}
+			}
+		]
+	}
 
 }
