@@ -3,26 +3,23 @@
   <component :is="$store.state.mobile ? 'div': 'v-container'">
     <h2 class="mt-2 ml-1 mb-2">큐레이션 카테고리</h2>
 
-    <v-layout row wrap class="mt-2 mb-4">
-      <v-flex v-for="item in category" :key="item.category">
-        <div class="mr-1 ml-1">
-          <v-chip dark :color="$store.state.bcolor" @click="getCatList(item.category)">
-            <v-avatar class="white">{{item.count}}</v-avatar>
-            <div class="category-title-text">
-              {{item.category}}
-            </div>
-          </v-chip>
-        </div>
-      </v-flex>
-    </v-layout>
+    <div class="flex-container mt-2 mb-4">
+      <div v-for="item in category" :key="item.category">
+        <v-chip dark :color="$store.state.bcolor" @click="getCatList(item.category)">
+          <v-avatar class="white">{{item.count}}</v-avatar>
+          <div class="category-title-text">
+            {{item.category}}
+          </div>
+        </v-chip>
+      </div>
+    </div>
 
     <CurationListShort
       :curationList="curationList"
       :showmore="true"
     />
-
     <AdSense/>
-
+    
   </component>
 
 </template>
@@ -83,5 +80,15 @@
   }
 </script>
 
-<style>
+<style scoped>
+
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .flex-item {
+    display: inline-flex;
+  }
 </style>
