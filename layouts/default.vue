@@ -32,9 +32,10 @@
       </form>
 
       <v-spacer></v-spacer>
-      <!--<v-btn icon>-->
-        <!--<v-icon>apps</v-icon>-->
-      <!--</v-btn>-->
+
+      <v-btn icon @click="menuRouter('/apps')" class="hidden-sm-and-down">
+        <v-icon>apps</v-icon>
+      </v-btn>
 
       <MenuNotice/>
       <MenuUser/>
@@ -104,11 +105,15 @@
 	  },
 
 	  mounted() {
+		  if (this.$vuetify.breakpoint.width > 768 ) {
+        this.drawer = true;
+		  }
 	  },
 
     methods: {
 
       menuRouter(to) {
+      	console.log(to);
         if (to == "facebook") {
           window.open("https://www.facebook.com/cfvdocom");
         } else {

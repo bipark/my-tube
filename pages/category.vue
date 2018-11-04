@@ -19,7 +19,7 @@
       :showmore="true"
     />
     <AdSense/>
-    
+
   </component>
 
 </template>
