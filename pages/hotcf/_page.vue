@@ -40,18 +40,16 @@
 
     async asyncData({app, params, store, query}) {
 
-      let param = {
+      let pageparam = {
 	      page: params.page ? parseInt(params.page) : 1,
-        limit: 36,
-        isshow: 1,
-        popular_order: true
+        limit: 36
       };
 
-      const result = await app.$axios.$get("/api/video/list", {params:param});
+      const result = await app.$axios.$get("/api/video/hot-video", {params:pageparam});
       return {
-        param : param,
+        param : pageparam,
         itemList: result.videolist,
-        pageCount : Math.ceil(result.count / param.limit),
+        pageCount : Math.ceil(result.count / pageparam.limit),
       }
 
     },

@@ -335,6 +335,46 @@ exports.getVideoList = function(req, res) {
 
 };
 
+exports.getHotVideoList = function(req, res) {
+
+	const limit = (req.query.limit == undefined) ? 18 : parseInt(req.query.limit);
+	const page = (req.query.page == undefined) ? 1 : parseInt(req.query.page);
+	const offset = (limit * (page - 1));
+
+	const countSql = squel.select()
+		.field("count(*) count")
+		.from("item_views", "views")
+		.join("items", "items", "views.item_id = items.id")
+		.where("(DATE_FORMAT(views.createdDate, '%Y-%m-%d') > DATE_SUB(NOW(), INTERVAL 30 DAY))")
+		.where("items.isshow = 1");
+
+	const ItemSql = squel.select()
+		.field("views.item_id")
+		.field("count(*)", "viewCount")
+		.field("items.*")
+		.from("item_views", "views")
+		.join("items", "items", "views.item_id = items.id")
+		.where("(DATE_FORMAT(views.createdDate, '%Y-%m-%d') > DATE_SUB(NOW(), INTERVAL 30 DAY))")
+		.where("items.isshow = 1")
+		.group("views.item_id")
+		.order("viewCount", false)
+		.limit(limit)
+		.offset(offset);
+
+	pool.query(countSql.toString(), function(err, count){
+		pool.query(ItemSql.toString(), function(err, result){
+			res.send({
+				err:err,
+				videolist:result,
+				count: count ? count[0].count : 1
+			})
+		});
+	});
+
+
+};
+
+
 exports.postVideoData = function(req, res) {
 
 

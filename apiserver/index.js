@@ -49,6 +49,7 @@ app.use(function(req, res, next) {
 	app.post('/api/youtube/add', model.addYoutubeVideo);
 
 	app.get('/api/video/list', model.getVideoList);
+	app.get('/api/video/hot-video', model.getHotVideoList);
 	app.get('/api/video/detail', model.getVideo);
 	app.get('/api/video/actions', model.getVideoActions);
 

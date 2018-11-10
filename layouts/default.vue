@@ -113,7 +113,6 @@
     methods: {
 
       menuRouter(to) {
-      	console.log(to);
         if (to == "facebook") {
           window.open("https://www.facebook.com/cfvdocom");
         } else {

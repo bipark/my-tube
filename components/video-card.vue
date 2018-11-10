@@ -18,9 +18,9 @@
     <div v-if="!hideDetails">
       <div class="detail-text-small">
         {{publishedDate}}
-        <span v-if="item.views > 0" class="detail-text-small">
-          &nbsp;&nbsp; 조회수 : {{item.views}} 회
-        </span>
+        <!--<span v-if="item.views > 0" class="detail-text-small">-->
+          <!--&nbsp;&nbsp; 조회수 : {{item.views}} 회-->
+        <!--</span>-->
       </div>
     </div>
     <div class="mb-4"></div>
