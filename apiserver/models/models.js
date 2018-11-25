@@ -833,6 +833,7 @@ exports.getCategories = function(req, res) {
 		.field("distinct category", "category")
 		.field("count(*)", "count")
 		.from("curation_master")
+		.where("isshow = 1")
 		.group("category")
 		.order("category");
 
@@ -857,12 +858,14 @@ exports.getSearchText = function(req, res) {
 		.field("cm.title")
 		.field("cm.description")
 		.from("curation_master", "cm")
-		.where("cm.title like ? OR cm.tag like ?", searchText, searchText);
+		.where("cm.title like ? OR cm.tag like ?", searchText, searchText)
+		.where("isshow = 1");
 
 	const ItemSql = squel.select()
 		.field("i.*")
 		.from("items", "i")
-		.where("i.title like ? OR i.note like ? ", searchText, searchText);
+		.where("i.title like ? OR i.note like ? ", searchText, searchText)
+		.where("isshow = 1");
 
 	async.series({
 		curations: function (cb2) {

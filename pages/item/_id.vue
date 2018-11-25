@@ -5,21 +5,19 @@
     <div v-if="video">
       <script type="application/ld+json" v-html="ldjson"/>
 
-      <no-ssr>
-        <div class="video_player">
-          <youtube
-            :video-id="video.video_id"
-            :player-vars="playerVars"
-            player-width="100%"
-            @ready="playerReady"
-            @playing="playing"
-            @ended="ended"
-            ref="youtube"
-            style="width: 100%"
-          >
-          </youtube>
-        </div>
-      </no-ssr>
+      <div class="video_player">
+        <youtube
+          :video-id="video.video_id"
+          :player-vars="playerVars"
+          player-width="100%"
+          @ready="playerReady"
+          @playing="playing"
+          @ended="ended"
+          ref="youtube"
+          style="width: 100%"
+        >
+        </youtube>
+      </div>
 
       <v-layout row wrap class="mt-3 mb-1">
         <h2 class="ml-1 mr-1">{{video.title}}</h2>
