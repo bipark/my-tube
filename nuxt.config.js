@@ -25,7 +25,7 @@ module.exports = {
     title: process.env.META_TITLE,
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' },
       { hid: 'title', name: 'title', content: process.env.META_TITLE },
       { hid: 'subject', name: 'subject', content: process.env.META_SUBJECT },
       { hid: 'description', name: 'description', content: process.env.META_DESCRIPTION },
