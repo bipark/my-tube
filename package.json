@@ -24,14 +24,13 @@
     "cookie-universal-nuxt": "^2.0.5",
     "moment": "^2.22.2",
     "mysql": "^2.16.0",
-    "nuxt": "^2.1.0",
+    "nuxt": "^2.3.4",
     "nuxt-client-init-module": "^0.1.4",
     "request-ip": "^2.1.1",
     "squel": "^5.12.2",
     "vue-localstorage": "^0.6.2",
     "vue-markdown": "^2.2.4",
     "vue-social-sharing": "^2.3.3",
-    "vue-youtube": "^1.2.5",
     "vue-youtube-embed": "^2.2.1"
   },
   "devDependencies": {
@@ -39,6 +38,7 @@
     "eslint": "^4.15.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
-    "eslint-plugin-vue": "^4.0.0"
+    "eslint-plugin-vue": "^4.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0"
   }
 }

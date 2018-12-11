@@ -6,18 +6,16 @@
       <script type="application/ld+json" v-html="ldjson"/>
 
       <div class="video_player">
-        <no-ssr>
-          <youtube
-            :video-id="video.video_id"
-            :player-vars="playerVars"
-            player-width="100%"
-            @ready="playerReady"
-            @playing="playing"
-            @ended="ended"
-            ref="youtube"
-            style="width: 100%"
-          />
-        </no-ssr>
+        <youtube
+          :video-id="video && video.video_id"
+          :player-vars="playerVars"
+          player-width="100%"
+          @ready="playerReady"
+          @playing="playing"
+          @ended="ended"
+          ref="youtube"
+          style="width: 100%; height: 400px; min-height: 400px"
+        />
       </div>
 
       <v-layout row wrap class="mt-3 mb-1">
