@@ -2,7 +2,7 @@
 
   <component :is="$store.state.mobile ? 'div': 'v-container'">
 
-    <div v-if="video">
+    <div v-show="video">
       <script type="application/ld+json" v-html="ldjson"/>
 
       <div class="video_player">
@@ -14,7 +14,6 @@
           @playing="playing"
           @ended="ended"
           ref="youtube"
-          style="width: 100%; height: 400px; min-height: 400px"
         />
       </div>
 
@@ -231,7 +230,7 @@
 
       playerVars() {
 	    	return {
-			    autoplay: (this.$store.state.user && this.$store.state.user.autoplay)
+			    autoplay: this.$store.state.user ? this.$store.state.user.autoplay : 0
 		    }
       },
 
