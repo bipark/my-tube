@@ -2,20 +2,22 @@
 
   <component :is="$store.state.mobile ? 'div': 'v-container'">
 
-    <div v-show="video">
+    <div v-if="video">
       <script type="application/ld+json" v-html="ldjson"/>
 
-      <div class="video_player">
-        <youtube
-          :video-id="video && video.video_id"
-          :player-vars="playerVars"
-          player-width="100%"
-          @ready="playerReady"
-          @playing="playing"
-          @ended="ended"
-          ref="youtube"
-        />
-      </div>
+      <no-ssr>
+        <div class="video_player">
+          <youtube
+            :video-id="video && video.video_id"
+            :player-vars="playerVars"
+            player-width="100%"
+            @ready="playerReady"
+            @playing="playing"
+            @ended="ended"
+            ref="youtube"
+          />
+        </div>
+      </no-ssr>
 
       <v-layout row wrap class="mt-3 mb-1">
         <h2 class="ml-1 mr-1">{{video.title}}</h2>
@@ -169,7 +171,7 @@
       return {
 	      player: null,
 	      videonumber: vnumber,
-        video : video,
+        // video : video,
         master : result.master,
         clist : result.details,
         bookmark : null,
@@ -180,6 +182,7 @@
         meta: video,
         ldjson : metajson,
         comment: null,
+	      loading: true
       }
     },
 
@@ -208,13 +211,26 @@
 
     },
 
+    data() {
+    	return {
+    		video: null,
+      }
+    },
+
 	  beforeDestroy() {
 		  if (this.player) {
 			  this.player.stopVideo();
 		  }
 	  },
 
+	  created () {
+		  this.$nextTick(function () {
+			  this.loading = false
+		  })
+	  },
+
 	  mounted() {
+    	this.getItem();
       this.getActions();
       this.addViewCount();
     },
@@ -263,6 +279,7 @@
 	  methods: {
       getItem() {
 
+      	console.log(this.item_id);
         this.$axios.get("/api/video/detail?id="+this.item_id)
           .then((result1)=>{
             this.video = result1.data.video.length > 0 ? result1.data.video[0] : null;

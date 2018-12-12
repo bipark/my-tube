@@ -5,7 +5,7 @@
       <v-layout row wrap>
         <div class="video_player">
           <youtube
-            :video-id="video.video_id"
+            :video-id="video && video.video_id"
             :player-vars="playerVars"
             player-width="100%"
             ref="youtube"
