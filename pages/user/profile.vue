@@ -14,33 +14,33 @@
     <v-tabs centered color="grey lighten-5" icons-and-text class="mb-4">
       <v-tabs-slider :color="$store.state.bcolor"></v-tabs-slider>
 
-      <v-tab v-for="item in items" :key="item.name">
+      <v-tab v-for="(item, i) in items" :key="i">
         {{ item.title }}
         <v-icon>{{ item.icon }}</v-icon>
       </v-tab>
 
-      <v-tab-item :id="'tab-1'" :key="1">
+      <v-tab-item :key="1">
         <v-card flat>
           <v-card-text>
             <History/>
           </v-card-text>
         </v-card>
       </v-tab-item>
-      <v-tab-item :id="'tab-2'" :key="2">
+      <v-tab-item :key="2">
         <v-card flat>
           <v-card-text>
             <Bookmark/>
           </v-card-text>
         </v-card>
       </v-tab-item>
-      <v-tab-item :id="'tab-3'" :key="3">
+      <v-tab-item :key="3">
         <v-card flat>
           <v-card-text>
             <Like/>
           </v-card-text>
         </v-card>
       </v-tab-item>
-      <v-tab-item :id="'tab-4'" :key="4">
+      <v-tab-item :key="4">
         <v-card flat>
           <v-card-text>
             <UserSettings/>

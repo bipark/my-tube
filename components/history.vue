@@ -2,7 +2,7 @@
 
   <div>
     <v-layout row wrap>
-      <v-flex xs6 sm4 lg3 xl2 v-for="(row, i) in itemList" :key="row.vid">
+      <v-flex xs6 sm4 lg3 xl2 v-for="(row, i) in itemList" :key="i">
         <nuxt-link :to="'/item/'+row.id">
           <VideoCard
             :item="row"
