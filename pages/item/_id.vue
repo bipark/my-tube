@@ -277,48 +277,42 @@
     },
 
 	  methods: {
-      getItem() {
+      async getItem() {
 
-      	console.log(this.item_id);
-        this.$axios.get("/api/video/detail?id="+this.item_id)
-          .then((result1)=>{
-            this.video = result1.data.video.length > 0 ? result1.data.video[0] : null;
-            this.bookmark = result1.bookmark;
-            this.like = result1.like;
+        const result1 = await this.$axios.get("/api/video/detail?id="+this.item_id)
+        this.video = result1.data.video.length > 0 ? result1.data.video[0] : null;
+        this.bookmark = result1.bookmark;
+        this.like = result1.like;
 
-            this.getActions();
-          });
+        this.getActions();
 
         const param = {
           "item_id": this.item_id,
           "curation_id": this.curation_id
         };
 
-        this.$axios.$get("/api/curation/details/byid", {params:param})
-          .then((result)=>{
-            this.master = result.master;
-            this.clist = result.details;
-            this.clist.forEach((item, index)=>{
-              if (item.id == this.item_id) {
-                this.videonumber = index;
-              }
-            });
-          });
+        const result = await this.$axios.$get("/api/curation/details/byid", {params:param})
+        this.master = result.master;
+        this.clist = result.details;
+        this.clist.forEach((item, index)=>{
+          if (item.id == this.item_id) {
+            this.videonumber = index;
+          }
+        });
+
       },
 
-      getActions() {
+      async getActions() {
 
         const param = {
           "item_id": this.item_id,
           "curation_id": this.curation_id
         };
 
-        this.$axios.get("/api/video/actions", {params:param})
-          .then((result)=>{
-            this.bookmark = result.data.bookmark;
-            this.like = result.data.like;
-            this.rate = result.data.rate;
-          });
+        const result = await this.$axios.get("/api/video/actions", {params:param})
+        this.bookmark = result.data.bookmark;
+        this.like = result.data.like;
+        this.rate = result.data.rate;
 
       },
 
@@ -328,12 +322,10 @@
         };
 
         // POST TO DB SERVER
-        this.$axios.$post("/api/video/view/add", {params:postparams})
-          .then((result)=>{
-          });
+        this.$axios.$post("/api/video/view/add", {params:postparams});
       },
 
-      addBookmark(kind) {
+      async addBookmark(kind) {
 
         if (!this.$store.state.user) {
 	        this.$router.push({ name: "login", params: { redirect: this.$route.path }});
@@ -347,14 +339,12 @@
         };
 
         // POST TO DB SERVER
-        this.$axios.$post("/api/video/bookmark/add", {params:postparams})
-          .then((result)=>{
-            this.getItem();
-          });
+        const res = await this.$axios.$post("/api/video/bookmark/add", {params:postparams})
+        this.getItem();
       },
 
 
-      addLike(kind) {
+      async addLike(kind) {
 
         if (!this.$store.state.user) {
 	        this.$router.push({ name: "login", params: { redirect: this.$route.path }});
@@ -368,10 +358,8 @@
         };
 
         // POST TO DB SERVER
-        this.$axios.$post("/api/video/like/add", {params:postparams})
-          .then((result)=>{
-            this.getItem();
-          });
+        const res = await this.$axios.$post("/api/video/like/add", {params:postparams})
+        this.getItem();
       },
 
       increaseVideoCount() {
@@ -402,7 +390,7 @@
         }
       },
 
-      onAftereRate(rate) {
+      async onAftereRate(rate) {
         if (!this.$store.state.user) {
 	        this.$router.push({ name: "login", params: { redirect: this.$route.path }});
 	        return;
@@ -415,10 +403,8 @@
         };
 
         // POST TO DB SERVER
-        this.$axios.$post("/api/video/rate/add", {params:postparams})
-          .then((result)=>{
-            this.getItem();
-          });
+        const res = await this.$axios.$post("/api/video/rate/add", {params:postparams})
+        this.getItem();
       },
 
     },

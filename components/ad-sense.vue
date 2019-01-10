@@ -1,18 +1,15 @@
 <template>
 
-  <no-ssr>
-    <div v-if="showad">
-      <v-layout row>
-        <div class="adsense mt-3 mb-4">
-          <adsbygoogle
-            ad-slot="3507616933"
-            class="example_responsive_1"
-          />
-        </div>
-      </v-layout>
-    </div>
-  </no-ssr>
-
+  <div v-if="showad">
+    <v-layout row>
+      <div class="adsense mt-3 mb-4">
+        <adsbygoogle
+          ad-slot="3507616933"
+          class="example_responsive_1"
+        />
+      </div>
+    </v-layout>
+  </div>
 
 </template>
 

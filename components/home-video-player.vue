@@ -62,13 +62,11 @@
     },
 
 	  methods: {
-    	getFeatres() {
-		    this.$axios.get("/api/features")
-			    .then((res)=>{
-				    this.features = res.data.features;
-				    this.videonumber = Math.floor(Math.random() * res.data.count);
-				    this.video = this.features[this.videonumber];
-			    });
+    	async getFeatres() {
+		    const res = await this.$axios.get("/api/features")
+        this.features = res.data.features;
+        this.videonumber = Math.floor(Math.random() * res.data.count);
+        this.video = this.features[this.videonumber];
 	    },
 
       playerReady(event) {

@@ -58,6 +58,7 @@
 		  pageClick() {
 			  this.$router.push('/page/'+this.param.page);
 			  this.getCurationList();
+			  window.scrollTo(0, 0);
 		  },
 
 	  }

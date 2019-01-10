@@ -55,12 +55,10 @@
     },
 
     methods: {
-      getItemList() {
-        this.$axios.$get("/api/video/list", {params:this.param})
-          .then((result)=>{
-            this.itemList = result.videolist;
-            window.scrollTo(0, 0);
-          })
+      async getItemList() {
+        const res = await this.$axios.$get("/api/video/list", {params:this.param})
+        this.itemList = res.videolist;
+        window.scrollTo(0, 0);
       },
 
       pageClick() {

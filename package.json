@@ -1,7 +1,7 @@
 {
-  "name": "MiTube-Web-Client",
+  "name": "My-Tube-Web-Client",
   "version": "1.0.0",
-  "description": "MiTube Web Client",
+  "description": "My-Tube Web Client",
   "author": "rtlink.park@gmail.com || http://practical.kr",
   "private": false,
   "scripts": {

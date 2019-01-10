@@ -3,20 +3,14 @@
   <v-app id="inspire">
 
     <v-navigation-drawer :clipped="$vuetify.breakpoint.lgAndUp" v-model="drawer" width=250 fixed app>
-
       <MenuNormal/>
       <div v-if="user && user.scope == 'admin'">
         <MenuAdmin/>
       </div>
-
     </v-navigation-drawer>
 
     <v-toolbar clipped-left :color="$store.state.bcolor" dark dense app fixed>
-
-      <v-toolbar-side-icon
-        class="mr-4"
-        @click.stop="drawer = !drawer">
-      </v-toolbar-side-icon>
+      <v-toolbar-side-icon class="mr-4" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <nuxt-link to="/">
         <v-toolbar-title class="mr-5">
           <div class="toolbar-title">{{mainTitle}}</div>
@@ -81,7 +75,6 @@
 		data() {
       return {
         drawer: false,
-        menu: true,
         searchText: null,
         mainTitle: process.env.mainTitle,
         subTitle: process.env.subTitle,

@@ -51,12 +51,10 @@
     },
 
     methods: {
-      getItemList() {
-        this.$axios.$get("/api/user/likes", {params:this.param})
-          .then((result)=>{
-            this.itemList = result.likes;
-            this.pageCount = Math.ceil(result.count / this.param.limit)
-          })
+      async getItemList() {
+        const res = await this.$axios.$get("/api/user/likes", {params:this.param})
+        this.itemList = res.likes;
+        this.pageCount = Math.ceil(res.count / this.param.limit)
       },
 
       pageClick() {
