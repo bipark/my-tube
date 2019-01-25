@@ -2,60 +2,64 @@
 
   <component :is="$store.state.mobile ? 'div': 'v-container'">
 
-    <v-layout row>
-      <h1 class="ml-1 mr-1 mt-2">{{master && master.title}}</h1>
-    </v-layout>
-    <v-layout row wrap class="ml-1 mr-1">
-      {{master && master.description}}
-    </v-layout>
+    <template v-if="master">
 
-    <v-layout class="mr-1 ml-1">
+      <v-layout row>
+        <h1 class="ml-1 mr-1 mt-2">{{master.title}}</h1>
+      </v-layout>
+      <v-layout row wrap class="ml-1 mr-1">
+        {{master.description}}
+      </v-layout>
+
+      <v-layout class="mr-1 ml-1">
       <span class="mr-2" style="color : darkgray">
         {{master.cdate}}
       </span>
-      <span class="mr-2" style="color : darkgray">
+        <span class="mr-2" style="color : darkgray">
         조회수 : {{master.view_count}}
       </span>
-      <span v-if="master.like_count > 0" class="mr-2" style="color : darkgray">
+        <span v-if="master.like_count > 0" class="mr-2" style="color : darkgray">
         좋아요 : {{master.like_count}}
       </span>
-      <span v-if="master.bookmark_count > 0" class="mr-2" style="color : darkgray">
+        <span v-if="master.bookmark_count > 0" class="mr-2" style="color : darkgray">
         북마크 :  {{master.bookmark_count}}
       </span>
-    </v-layout>
+      </v-layout>
 
-    <ShareComp :meta="meta" from="curation" class="ml-1 mr-1 mt-3"/>
+      <ShareComp :meta="meta" from="curation" class="ml-1 mr-1 mt-3"/>
 
-    <v-layout row wrap class="ml-1 mr-1">
+      <v-layout row wrap class="ml-1 mr-1">
 
-      <div v-if="like">
-        <v-btn fab small :color="$store.state.bgcolor" @click.native="addLike(false)">
-          <img src="@/assets/icons/heart.svg" width="18" height="18">
-        </v-btn>
-      </div>
+        <div v-if="like">
+          <v-btn fab small :color="$store.state.bgcolor" @click.native="addLike(false)">
+            <img src="@/assets/icons/heart.svg" width="18" height="18">
+          </v-btn>
+        </div>
 
-      <div v-else>
-        <v-btn fab small :color="$store.state.bgcolor" @click.native="addLike(true)">
-          <img src="@/assets/icons/heart.svg" width="18" height="18" class="revert">
-        </v-btn>
-      </div>
+        <div v-else>
+          <v-btn fab small :color="$store.state.bgcolor" @click.native="addLike(true)">
+            <img src="@/assets/icons/heart.svg" width="18" height="18" class="revert">
+          </v-btn>
+        </div>
 
-      <div v-if="bookmark">
-        <v-btn fab small :color="$store.state.bgcolor" @click.native="addBookmark(false)">
-          <img src="@/assets/icons/bookmark.svg" width="18" height="18">
-        </v-btn>
-      </div>
-      <div v-else>
-        <v-btn fab small :color="$store.state.bgcolor" @click.native="addBookmark(true)">
-          <img src="@/assets/icons/bookmark.svg" width="18" height="18" class="revert">
-        </v-btn>
-      </div>
-      <div style="height: 20px"></div>
+        <div v-if="bookmark">
+          <v-btn fab small :color="$store.state.bgcolor" @click.native="addBookmark(false)">
+            <img src="@/assets/icons/bookmark.svg" width="18" height="18">
+          </v-btn>
+        </div>
+        <div v-else>
+          <v-btn fab small :color="$store.state.bgcolor" @click.native="addBookmark(true)">
+            <img src="@/assets/icons/bookmark.svg" width="18" height="18" class="revert">
+          </v-btn>
+        </div>
+        <div style="height: 20px"></div>
 
 
-    </v-layout>
+      </v-layout>
 
-    <AdSense/>
+      <AdSense/>
+
+    </template>
 
     <ItemList
       :itemlist="itemlist"
@@ -90,6 +94,7 @@
         curationid:params.id
       };
       const result = await app.$axios.get("/api/curation/byid", {params:param});
+	    console.log(result.data);
 
       const master1 = result.data.master.length > 0 ? result.data.master[0] : null;
       const detail1 = result.data.curations.length > 0 ? result.data.curations[0] : null;
@@ -139,19 +144,20 @@
 
     methods: {
 
-      getItem() {
+      async getItem() {
         const param = {
           isshow: 1,
           curationid:this.curation_id
         };
-
-        this.$axios.$get("/api/curation/byid", {params:param})
-          .then((result)=>{
-
-            this.master = result.master.length > 0 ? result.master[0] : null;
-            this.like = result.like;
-            this.bookmark = result.bookmark;
-          });
+        const result = await this.$axios.$get("/api/curation/byid", {params:param})
+        if (result.data.master.length == 0) {
+        	alert('존재 하지 않는 큐레이션 입니다.');
+        	this.$router.push('/');
+        } else {
+	        this.master = result.master.length > 0 ? result.master[0] : null;
+	        this.like = result.like;
+	        this.bookmark = result.bookmark;
+        }
       },
 
       addViewCount() {
