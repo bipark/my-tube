@@ -94,7 +94,6 @@
         curationid:params.id
       };
       const result = await app.$axios.get("/api/curation/byid", {params:param});
-	    console.log(result.data);
 
       const master1 = result.data.master.length > 0 ? result.data.master[0] : null;
       const detail1 = result.data.curations.length > 0 ? result.data.curations[0] : null;
