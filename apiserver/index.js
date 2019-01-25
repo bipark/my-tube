@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const logger = require('morgan');
 
 const app = express();
 
@@ -12,7 +13,7 @@ var comment_model = require('./models/comment_model');
 var device_model = require('./models/device_models');
 var rcmd_model = require('./models/rcmd_model');
 
-
+app.use(logger('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
