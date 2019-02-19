@@ -46,13 +46,10 @@
     },
 
   	methods: {
-  		getCurationList() {
-
-			  this.$axios.get("/api/curation/master", {params:this.param})
-          .then((res)=>{
-            this.curationList = res.data.curations;
-		        this.pageCount = Math.ceil(res.data.count / this.param.limit);
-          })
+  		async getCurationList() {
+			  const res = await this.$axios.get("/api/curation/master", {params:this.param});
+        this.curationList = res.data.curations;
+        this.pageCount = Math.ceil(res.data.count / this.param.limit);
 		  },
 
 		  pageClick() {

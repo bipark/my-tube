@@ -98,9 +98,6 @@
 	  },
 
 	  mounted() {
-		  if (this.$vuetify.breakpoint.width > 768 ) {
-        this.drawer = true;
-		  }
 	  },
 
     methods: {
